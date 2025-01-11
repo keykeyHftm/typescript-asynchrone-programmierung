@@ -10,9 +10,9 @@ import fetch from "node-fetch";
 import { get } from "./utils";
 
 // promise based
-test("getLukeSkywalkerInfo when https://swapi.dev/api/people/1 api call fails, should return people error", (done) => {
+test("getLukeSkywalkerInfo when https://swapi.py4e.com/api/people/1 api call fails, should return people error", (done) => {
   (fetch as unknown as jest.Mock<any, any>).mockImplementation((url) => {
-    if (url === "https://swapi.dev/api/people/1") {
+    if (url === "https://swapi.py4e.com/api/people/1") {
       return Promise.reject(new Error("People call failed"));
     }
   });
@@ -23,17 +23,17 @@ test("getLukeSkywalkerInfo when https://swapi.dev/api/people/1 api call fails, s
   });
 });
 
-test("getLukeSkywalkerInfo when https://swapi.dev/api/planets/1/ api call fails, should return homeworld error", (done) => {
+test("getLukeSkywalkerInfo when https://swapi.py4e.com/api/planets/1/ api call fails, should return homeworld error", (done) => {
   (fetch as unknown as jest.Mock<any, any>).mockImplementation((url) => {
-    if (url === "https://swapi.dev/api/people/1") {
+    if (url === "https://swapi.py4e.com/api/people/1") {
       return Promise.resolve({ json: () => Promise.resolve(peopleCallback) });
     }
 
-    if (url === "https://swapi.dev/api/planets/1/") {
+    if (url === "https://swapi.py4e.com/api/planets/1/") {
       return Promise.reject(new Error("Homeworld call failed"));
     }
 
-    if (url.startsWith("https://swapi.dev/api/films/")) {
+    if (url.startsWith("https://swapi.py4e.com/api/films/")) {
       return Promise.resolve({ json: () => Promise.resolve(filmCallback) });
     }
   });
@@ -44,23 +44,23 @@ test("getLukeSkywalkerInfo when https://swapi.dev/api/planets/1/ api call fails,
   });
 });
 
-test("getLukeSkywalkerInfo when https://swapi.dev/api/films/1/ api call fails, should return Film 1 error", (done) => {
+test("getLukeSkywalkerInfo when https://swapi.py4e.com/api/films/1/ api call fails, should return Film 1 error", (done) => {
   (fetch as unknown as jest.Mock<any, any>).mockImplementation((url) => {
-    if (url === "https://swapi.dev/api/people/1") {
+    if (url === "https://swapi.py4e.com/api/people/1") {
       return Promise.resolve({ json: () => Promise.resolve(peopleCallback) });
     }
 
-    if (url === "https://swapi.dev/api/planets/1/") {
+    if (url === "https://swapi.py4e.com/api/planets/1/") {
       return Promise.resolve({
         json: () => Promise.resolve(homeworldCallback),
       });
     }
 
-    if (url === "https://swapi.dev/api/films/1/") {
+    if (url === "https://swapi.py4e.com/api/films/1/") {
       return Promise.reject(new Error("Film 1 call failed"));
     }
 
-    if (url.startsWith("https://swapi.dev/api/films/")) {
+    if (url.startsWith("https://swapi.py4e.com/api/films/")) {
       return Promise.resolve({ json: () => Promise.resolve(filmCallback) });
     }
   });
@@ -71,23 +71,23 @@ test("getLukeSkywalkerInfo when https://swapi.dev/api/films/1/ api call fails, s
   });
 });
 
-test("getLukeSkywalkerInfo when https://swapi.dev/api/films/6/ api call fails, should return Film 6 error", (done) => {
+test("getLukeSkywalkerInfo when https://swapi.py4e.com/api/films/6/ api call fails, should return Film 6 error", (done) => {
   (fetch as unknown as jest.Mock<any, any>).mockImplementation((url) => {
-    if (url === "https://swapi.dev/api/people/1") {
+    if (url === "https://swapi.py4e.com/api/people/1") {
       return Promise.resolve({ json: () => Promise.resolve(peopleCallback) });
     }
 
-    if (url === "https://swapi.dev/api/planets/1/") {
+    if (url === "https://swapi.py4e.com/api/planets/1/") {
       return Promise.resolve({
         json: () => Promise.resolve(homeworldCallback),
       });
     }
 
-    if (url === "https://swapi.dev/api/films/6/") {
+    if (url === "https://swapi.py4e.com/api/films/6/") {
       return Promise.reject(new Error("Film 6 call failed"));
     }
 
-    if (url.startsWith("https://swapi.dev/api/films/")) {
+    if (url.startsWith("https://swapi.py4e.com/api/films/")) {
       return Promise.resolve({ json: () => Promise.resolve(filmCallback) });
     }
   });
@@ -99,9 +99,9 @@ test("getLukeSkywalkerInfo when https://swapi.dev/api/films/6/ api call fails, s
 });
 
 // async based
-test("getLukeSkywalkerInfoAsync when https://swapi.dev/api/people/1 api call fails, should return people error", async () => {
+test("getLukeSkywalkerInfoAsync when https://swapi.py4e.com/api/people/1 api call fails, should return people error", async () => {
   (fetch as unknown as jest.Mock<any, any>).mockImplementation((url) => {
-    if (url === "https://swapi.dev/api/people/1") {
+    if (url === "https://swapi.py4e.com/api/people/1") {
       return Promise.reject(new Error("People call failed"));
     }
   });
@@ -111,17 +111,17 @@ test("getLukeSkywalkerInfoAsync when https://swapi.dev/api/people/1 api call fai
   );
 });
 
-test("getLukeSkywalkerInfoAsync when https://swapi.dev/api/planets/1/ api call fails, should return homeworld error", async () => {
+test("getLukeSkywalkerInfoAsync when https://swapi.py4e.com/api/planets/1/ api call fails, should return homeworld error", async () => {
   (fetch as unknown as jest.Mock<any, any>).mockImplementation((url) => {
-    if (url === "https://swapi.dev/api/people/1") {
+    if (url === "https://swapi.py4e.com/api/people/1") {
       return Promise.resolve({ json: () => Promise.resolve(peopleCallback) });
     }
 
-    if (url === "https://swapi.dev/api/planets/1/") {
+    if (url === "https://swapi.py4e.com/api/planets/1/") {
       return Promise.reject(new Error("Homeworld call failed"));
     }
 
-    if (url.startsWith("https://swapi.dev/api/films/")) {
+    if (url.startsWith("https://swapi.py4e.com/api/films/")) {
       return Promise.resolve({ json: () => Promise.resolve(filmCallback) });
     }
   });
@@ -131,23 +131,23 @@ test("getLukeSkywalkerInfoAsync when https://swapi.dev/api/planets/1/ api call f
   );
 });
 
-test("getLukeSkywalkerInfoAsync when https://swapi.dev/api/films/1/ api call fails, should return Film 1 error", async () => {
+test("getLukeSkywalkerInfoAsync when https://swapi.py4e.com/api/films/1/ api call fails, should return Film 1 error", async () => {
   (fetch as unknown as jest.Mock<any, any>).mockImplementation((url) => {
-    if (url === "https://swapi.dev/api/people/1") {
+    if (url === "https://swapi.py4e.com/api/people/1") {
       return Promise.resolve({ json: () => Promise.resolve(peopleCallback) });
     }
 
-    if (url === "https://swapi.dev/api/planets/1/") {
+    if (url === "https://swapi.py4e.com/api/planets/1/") {
       return Promise.resolve({
         json: () => Promise.resolve(homeworldCallback),
       });
     }
 
-    if (url === "https://swapi.dev/api/films/1/") {
+    if (url === "https://swapi.py4e.com/api/films/1/") {
       return Promise.reject(new Error("Film 1 call failed"));
     }
 
-    if (url.startsWith("https://swapi.dev/api/films/")) {
+    if (url.startsWith("https://swapi.py4e.com/api/films/")) {
       return Promise.resolve({ json: () => Promise.resolve(filmCallback) });
     }
   });
@@ -157,23 +157,23 @@ test("getLukeSkywalkerInfoAsync when https://swapi.dev/api/films/1/ api call fai
   );
 });
 
-test("getLukeSkywalkerInfoAsync when https://swapi.dev/api/films/6/ api call fails, should return Film 6 error", async () => {
+test("getLukeSkywalkerInfoAsync when https://swapi.py4e.com/api/films/6/ api call fails, should return Film 6 error", async () => {
   (fetch as unknown as jest.Mock<any, any>).mockImplementation((url) => {
-    if (url === "https://swapi.dev/api/people/1") {
+    if (url === "https://swapi.py4e.com/api/people/1") {
       return Promise.resolve({ json: () => Promise.resolve(peopleCallback) });
     }
 
-    if (url === "https://swapi.dev/api/planets/1/") {
+    if (url === "https://swapi.py4e.com/api/planets/1/") {
       return Promise.resolve({
         json: () => Promise.resolve(homeworldCallback),
       });
     }
 
-    if (url === "https://swapi.dev/api/films/6/") {
+    if (url === "https://swapi.py4e.com/api/films/6/") {
       return Promise.reject(new Error("Film 6 call failed"));
     }
 
-    if (url.startsWith("https://swapi.dev/api/films/")) {
+    if (url.startsWith("https://swapi.py4e.com/api/films/")) {
       return Promise.resolve({ json: () => Promise.resolve(filmCallback) });
     }
   });
@@ -184,9 +184,9 @@ test("getLukeSkywalkerInfoAsync when https://swapi.dev/api/films/6/ api call fai
 });
 
 // observable based
-test("getLukeSkywalkerInfoObservable when https://swapi.dev/api/people/1 api call fails, should return people error", (done) => {
+test("getLukeSkywalkerInfoObservable when https://swapi.py4e.com/api/people/1 api call fails, should return people error", (done) => {
   (get as unknown as jest.Mock<any, any>).mockImplementation((url) => {
-    if (url === "https://swapi.dev/api/people/1") {
+    if (url === "https://swapi.py4e.com/api/people/1") {
       return throwError(() => "People call failed");
     }
   });
@@ -200,17 +200,17 @@ test("getLukeSkywalkerInfoObservable when https://swapi.dev/api/people/1 api cal
   });
 });
 
-test("getLukeSkywalkerInfoAsync when https://swapi.dev/api/planets/1/ api call fails, should return homeworld error", (done) => {
+test("getLukeSkywalkerInfoAsync when https://swapi.py4e.com/api/planets/1/ api call fails, should return homeworld error", (done) => {
   (get as unknown as jest.Mock<any, any>).mockImplementation((url) => {
-    if (url === "https://swapi.dev/api/people/1") {
+    if (url === "https://swapi.py4e.com/api/people/1") {
       return of(peopleCallback);
     }
 
-    if (url === "https://swapi.dev/api/planets/1/") {
+    if (url === "https://swapi.py4e.com/api/planets/1/") {
       return throwError(() => "Homeworld call failed");
     }
 
-    if (url.startsWith("https://swapi.dev/api/films/")) {
+    if (url.startsWith("https://swapi.py4e.com/api/films/")) {
       return of(filmCallback);
     }
   });
@@ -224,21 +224,21 @@ test("getLukeSkywalkerInfoAsync when https://swapi.dev/api/planets/1/ api call f
   });
 });
 
-test("getLukeSkywalkerInfoAsync when https://swapi.dev/api/films/1/ api call fails, should return Film 1 error", (done) => {
+test("getLukeSkywalkerInfoAsync when https://swapi.py4e.com/api/films/1/ api call fails, should return Film 1 error", (done) => {
   (get as unknown as jest.Mock<any, any>).mockImplementation((url) => {
-    if (url === "https://swapi.dev/api/people/1") {
+    if (url === "https://swapi.py4e.com/api/people/1") {
       return of(peopleCallback);
     }
 
-    if (url === "https://swapi.dev/api/planets/1/") {
+    if (url === "https://swapi.py4e.com/api/planets/1/") {
       return of(homeworldCallback);
     }
 
-    if (url === "https://swapi.dev/api/films/1/") {
+    if (url === "https://swapi.py4e.com/api/films/1/") {
       return throwError(() => "Film 1 call failed");
     }
 
-    if (url.startsWith("https://swapi.dev/api/films/")) {
+    if (url.startsWith("https://swapi.py4e.com/api/films/")) {
       return of(filmCallback);
     }
   });
@@ -252,21 +252,21 @@ test("getLukeSkywalkerInfoAsync when https://swapi.dev/api/films/1/ api call fai
   });
 });
 
-test("getLukeSkywalkerInfoAsync when https://swapi.dev/api/films/6/ api call fails, should return Film 6 error", (done) => {
+test("getLukeSkywalkerInfoAsync when https://swapi.py4e.com/api/films/6/ api call fails, should return Film 6 error", (done) => {
   (get as unknown as jest.Mock<any, any>).mockImplementation((url) => {
-    if (url === "https://swapi.dev/api/people/1") {
+    if (url === "https://swapi.py4e.com/api/people/1") {
       return of(peopleCallback);
     }
 
-    if (url === "https://swapi.dev/api/planets/1/") {
+    if (url === "https://swapi.py4e.com/api/planets/1/") {
       return of(homeworldCallback);
     }
 
-    if (url === "https://swapi.dev/api/films/6/") {
+    if (url === "https://swapi.py4e.com/api/films/6/") {
       return throwError(() => "Film 6 call failed");
     }
 
-    if (url.startsWith("https://swapi.dev/api/films/")) {
+    if (url.startsWith("https://swapi.py4e.com/api/films/")) {
       return of(filmCallback);
     }
   });
@@ -284,12 +284,12 @@ const peopleCallback = {
   name: "Luke Skywalker",
   height: "172",
   gender: "male",
-  homeworld: "https://swapi.dev/api/planets/1/",
+  homeworld: "https://swapi.py4e.com/api/planets/1/",
   films: [
-    "https://swapi.dev/api/films/1/",
-    "https://swapi.dev/api/films/2/",
-    "https://swapi.dev/api/films/3/",
-    "https://swapi.dev/api/films/6/",
+    "https://swapi.py4e.com/api/films/1/",
+    "https://swapi.py4e.com/api/films/2/",
+    "https://swapi.py4e.com/api/films/3/",
+    "https://swapi.py4e.com/api/films/6/",
   ],
 };
 
